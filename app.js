@@ -7,7 +7,7 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 const findOrCreate = require("mongoose-findorcreate");
-const session = require("cookie-session");
+const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -21,7 +21,7 @@ app.use(express.static("public"));
 app.use(session({
     secret: "express session secret",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
